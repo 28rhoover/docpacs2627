@@ -48,6 +48,9 @@ touchArea.addEventListener('touchstart', function (event) {
     startY = event.touches[0].clientY - areaRectangle.top;
     currentX = event.touches[0].clientX - areaRectangle.left;
     currentY = event.touches[0].clientY - areaRectangle.top;
+    viewportX = event.touches[0].clientX;
+    viewportY = event.touches[0].clientY;
+    //these variables names dont match 1:1 with the assignment because i removed the original ones that showed viewport coords, thinking they were unneeded and redundant
     touchActive = true;
     objectX = currentX - PLAYER_WIDTH / 2;
     objectY = currentY - PLAYER_HEIGHT / 2;
@@ -57,6 +60,8 @@ touchArea.addEventListener('touchstart', function (event) {
     <p>Event: touchstart</p>
     <p>Local X: ${currentX}</p>
     <p>Local Y: ${currentY}</p>
+    <p>Viewport X: ${viewportX}</p>
+    <p>Viewport Y: ${viewportY}</p>
     <p>Active Touches: ${event.touches.length}`;
 });
 
@@ -91,8 +96,8 @@ touchArea.addEventListener('touchmove', function (event) {
         <p>Start Y: ${startY}</p>
         <p>Local X: ${currentX}</p>
         <p>Local Y: ${currentY}</p>
-        <p>Horizontal Change: ${deltaX}</p>
-        <p>Vertical Change: ${deltaY}</p>
+        <p>Horizontal Change (Delta X): ${deltaX}</p>
+        <p>Vertical Change (Delta Y): ${deltaY}</p>
         <p>Active Touches: ${event.touches.length}</p>
         <p>Direction: ${direction}</p>
         <p>Distance: ${distance}</p>`;
