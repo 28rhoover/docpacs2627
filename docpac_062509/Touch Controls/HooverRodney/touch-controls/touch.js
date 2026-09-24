@@ -143,8 +143,8 @@ touchArea.addEventListener('touchend', function (event) {
 
 touchArea.addEventListener('touchcancel', function (event) {
     touchActive = false;
+    gestureType = "";
     touchStatus.innerHTML = `
-    <p>Event: touchend</p>
-    <p>Gesture: ${gestureType}</p>
-    <p>Final Distance: ${distance}</p>`
+    <p>Event: touchcancel</p>
+    <p>Touch Cancelled!</p>`
 });
