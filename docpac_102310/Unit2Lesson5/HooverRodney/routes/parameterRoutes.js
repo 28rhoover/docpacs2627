@@ -4,18 +4,29 @@ const path = require('path');
 
 router.get('/query', (req, res) => {
     const message = req.query.message;
-    if (message === "" || message === undefined) {
-        res.status(400).render('queryResponse.ejs', {
-            pageTitle: "Invalid Query Response!",
-            queryResponse: `Please provide a message parameter. \"Example: /query?message=YourMessage\". Your query (the part of the URL that comes AFTER \"query\") of \"${message}\" was invalid.`
-
+    if (message === undefined) {
+        res.status(400).render('error.ejs', {
+            pageTitle: "An Error Has Occurred!",
+            statusCode: 400,
+            errorHeading: "Error 400",
+            message: "You didn't provide a message parameter (the part of the URL that comes AFTER \"query\")! Please provide a message parameter \"Example: /query?message=YourMessage\" or ",
+            linkText: "return to the homepage",
+            linkURL: "/",
         })
     } else {
         const trimmedMessage = message.trim();
         if (trimmedMessage === "") {
-            res.status(400).render('queryResponse.ejs', {
-                pageTitle: "Invalid Query Response!",
-                queryResponse: `Please provide a message parameter. \"Example: /query?message=YourMessage\". Your query (the part of the URL that comes AFTER \"query\") of \"${trimmedMessage}\" was invalid.`
+            // res.status(400).render('queryResponse.ejs', {
+            //     pageTitle: "Invalid Query Response!",
+            //     queryResponse: `Please provide a message parameter. \"Example: /query?message=YourMessage\". Your query (the part of the URL that comes AFTER \"query\") was blank!`
+            // })
+            res.status(400).render('error.ejs', {
+                pageTitle: "An Error Has Occurred!",
+                statusCode: 400,
+                errorHeading: "Error 400",
+                message: "Your query (the part of the URL that comes AFTER \"query\") was blank! Please provide a message parameter (\"Example: /query?message=YourMessage\") or",
+                linkText: "return to the homepage",
+                linkURL: "/",
             })
         } else {
             res.render('queryResponse.ejs', {
@@ -29,16 +40,19 @@ router.get('/query', (req, res) => {
 router.get('/urlparams/:paramname', (req, res) => {
     const parameter = req.params.paramname;
     const trimmedParameter = parameter.trim();
-    if (trimmedParameter === null || trimmedParameter === "") {
-        res.status(400).render('parameterResponse.ejs', {
-            pageTitle: "Invalid Parameter Response",
-            parameterResponse: "Please provide a URL parameter. Example: '/urlparams/ ' <- your URL parameters go after this bit."
+    if (trimmedParameter === "") {
+        res.status(400).render('error.ejs', {
+            pageTitle: "An Error Has Occurred!",
+            statusCode: 400,
+            errorHeading: "Error 400",
+            message: "Your URL parameter was either blank or a space! Please provide a valid URL parameter. Example: '/urlparams/YourTextHere' or ",
+            linkText: "return to the homepage",
+            linkURL: "/",
         })
     } else {
-        res.send(`<p>Your query parameters are: ${trimmedParameter}</p>`);
         res.render('parameterResponse.ejs', {
             pageTitle: "Successful Parameter Response",
-            parameterResponse: `Your query is ${trimmedParameter}`
+            parameterResponse: `Your URL parameter is ${trimmedParameter}`
         })
     }
 })
