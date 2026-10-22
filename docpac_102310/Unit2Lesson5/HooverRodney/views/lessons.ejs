@@ -1,0 +1,11 @@
+<%- include('partials/header') %>
+
+<h1><%= pageTitle %></h1>
+<p><%= pageDesc %></p>
+<br><br>
+
+<% lessons.forEach(function(lesson) { %>
+    <h2><a href=<%= lesson.url %>><%= lesson.linkText %></a></h2>
+    <p><%= lesson.description %></p>
+<% }) %>
+<%- include('partials/footer') %>
