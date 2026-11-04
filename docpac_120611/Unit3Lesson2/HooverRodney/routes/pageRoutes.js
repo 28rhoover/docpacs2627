@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
         {
             linkText: "Lesson 5",
             url: "https://github.com/csmith1188/docpacs2627/raw/refs/heads/main/docpac_102310/Unit2Lesson5/Unit2Lesson5.docx",
-            description: "Introduced dynamic web pages with EJS templates! This is what allows this here lesson page to exist! This now allows me to dynamically serve pages to the browser based on the data provided!" 
+            description: "Introduced dynamic web pages with EJS templates! This is what allows this here lesson page to exist! This now allows me to dynamically serve pages to the browser based on the data provided!"
         }
     ];
 
