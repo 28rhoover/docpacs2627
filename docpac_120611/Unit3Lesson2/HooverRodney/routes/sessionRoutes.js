@@ -21,3 +21,5 @@ router.post('/session-test/reset', (req, res) => {
 })
 
 module.exports = router;
+
+//visits is an instructional value that will laterbe replaced or supplemented by authenticated user information

@@ -7,3 +7,4 @@ node_modules/
 # Database Stuff
 data/app.db
 data/session.db
+data/sessions.db

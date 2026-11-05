@@ -31,3 +31,4 @@ const sessionMiddleware = session({
 module.exports = sessionMiddleware;
 
 //actual code saving the visits to the database is within the packages — not something i wrote
+//visits is an instructional value that will laterbe replaced or supplemented by authenticated user information
